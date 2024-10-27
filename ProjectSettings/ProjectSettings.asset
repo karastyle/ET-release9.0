@@ -865,7 +865,7 @@ PlayerSettings:
   scriptingDefineSymbols:
     Android: UNITY;ENABLE_VIEW
     Server: UNITY;ENABLE_VIEW
-    Standalone: UNITY;ENABLE_VIEW;INITED
+    Standalone: UNITY;ENABLE_VIEW;INITED;UNITY_PIPELINE_URP
     WebGL: UNITY;ENABLE_VIEW
     iPhone: UNITY;ENABLE_VIEW
   additionalCompilerArguments: {}
