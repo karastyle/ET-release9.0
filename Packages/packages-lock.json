@@ -67,8 +67,14 @@
       "source": "embedded",
       "dependencies": {}
     },
-    "cn.etetet.kk": {
-      "version": "file:cn.etetet.kk",
+    "cn.etetet.kara": {
+      "version": "file:cn.etetet.kara",
+      "depth": 0,
+      "source": "embedded",
+      "dependencies": {}
+    },
+    "cn.etetet.kdb": {
+      "version": "file:cn.etetet.kdb",
       "depth": 0,
       "source": "embedded",
       "dependencies": {}

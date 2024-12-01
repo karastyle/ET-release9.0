@@ -79,3 +79,9 @@ Assets/HybridCLR
 .idea
 /Assets/Samples
 /Assets/Art
+/Bundles
+/Bundles
+/Bundles/StandaloneWindows64
+Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.bytes
+Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.hash
+Bundles/StandaloneWindows64/DefaultPackage/Simulate/PackageManifest_DefaultPackage_Simulate.json
