@@ -37,6 +37,8 @@ namespace ET.Client
             self.u_ComServerList = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.LoopVerticalScrollRect>("u_ComServerList");
             self.u_DataShowServer = self.UIBase.DataTable.FindDataValue<YIUIFramework.UIDataValueBool>("u_DataShowServer");
             self.u_DataCurServerName = self.UIBase.DataTable.FindDataValue<YIUIFramework.UIDataValueString>("u_DataCurServerName");
+            self.u_EventStart = self.UIBase.EventTable.FindEvent<UITaskEventP0>("u_EventStart");
+            self.u_EventStartHandle = self.u_EventStart.Add(self,SelectServerViewComponent.OnEventStartInvoke);
 
         }
     }

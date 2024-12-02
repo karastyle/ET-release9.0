@@ -25,6 +25,9 @@ namespace ET.Client
         public UnityEngine.UI.LoopVerticalScrollRect u_ComServerList;
         public YIUIFramework.UIDataValueBool u_DataShowServer;
         public YIUIFramework.UIDataValueString u_DataCurServerName;
+        public UITaskEventP0 u_EventStart;
+        public UITaskEventHandleP0 u_EventStartHandle;
+        public const string OnEventStartInvoke = "SelectServerViewComponent.OnEventStartInvoke";
 
     }
 }

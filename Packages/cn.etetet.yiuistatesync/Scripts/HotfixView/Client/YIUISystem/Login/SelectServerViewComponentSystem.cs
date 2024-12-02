@@ -76,6 +76,13 @@ namespace ET.Client
         }
 
         #region YIUIEvent开始
+        
+        [YIUIInvoke(SelectServerViewComponent.OnEventStartInvoke)]
+        private static async ETTask OnEventStartInvoke(this SelectServerViewComponent self)
+        {
+            await YIUIMgrComponent.Inst.Root.OpenPanelAsync<CharacterPanelComponent>();
+            await ETTask.CompletedTask;
+        }
         #endregion YIUIEvent结束
     }
 }
