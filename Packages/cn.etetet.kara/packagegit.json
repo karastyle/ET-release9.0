@@ -1,0 +1,11 @@
+﻿{
+    "Id": 2000,
+    "Name": "kara",
+    "ScriptsReferences": 
+    {
+        "Hotfix": ["ET.Kara"],
+        "HotfixView": ["ET.Kara"],
+        "Model": ["ET.Kara"],
+        "ModelView": ["ET.Kara"]
+    }
+}

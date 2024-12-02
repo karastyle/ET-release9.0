@@ -1,0 +1,11 @@
+﻿{
+    "Id": 1006,
+    "Name": "kdb",
+    "ScriptsReferences": 
+    {
+        "Hotfix": ["ET.KDB"],
+        "HotfixView": ["ET.KDB"],
+        "Model": ["ET.KDB"],
+        "ModelView": ["ET.KDB"]
+    }
+}

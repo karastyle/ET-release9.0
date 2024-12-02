@@ -1,0 +1,16 @@
+﻿{
+  "name": "cn.etetet.kara",
+  "displayName": "ET.Kara",
+  "version": "0.0.0",
+  "unity": "2022.3",
+  "description": "主模块",
+  "author": {
+    "name": "Kara"
+  },
+  "repository": {},
+  "relatedPackages": {},
+  "dependencies": {},
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@ET-Packages"
+  }
+}

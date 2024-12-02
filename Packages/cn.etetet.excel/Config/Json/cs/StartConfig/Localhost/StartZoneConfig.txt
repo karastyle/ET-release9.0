@@ -1,0 +1,15 @@
+{"dict": [
+[2, {"_t":"StartZoneConfig","_id":2,"ZoneType":2,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Robot"}],
+[3, {"_t":"StartZoneConfig","_id":3,"ZoneType":3,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Route"}],
+[4, {"_t":"StartZoneConfig","_id":4,"ZoneType":4,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Common"}],
+[100, {"_t":"StartZoneConfig","_id":100,"ZoneType":100,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Game1"}],
+[101, {"_t":"StartZoneConfig","_id":101,"ZoneType":100,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Game2"}],
+[102, {"_t":"StartZoneConfig","_id":102,"ZoneType":100,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Game3"}],
+[103, {"_t":"StartZoneConfig","_id":103,"ZoneType":100,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Game4"}],
+[104, {"_t":"StartZoneConfig","_id":104,"ZoneType":100,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Game5"}],
+[105, {"_t":"StartZoneConfig","_id":105,"ZoneType":100,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Game6"}],
+[106, {"_t":"StartZoneConfig","_id":106,"ZoneType":100,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Game7"}],
+[107, {"_t":"StartZoneConfig","_id":107,"ZoneType":100,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Game8"}],
+[108, {"_t":"StartZoneConfig","_id":108,"ZoneType":100,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Game9"}],
+[109, {"_t":"StartZoneConfig","_id":109,"ZoneType":100,"DBConnection":"mongodb://127.0.0.1","DBName":"ET_Game10"}],
+]}

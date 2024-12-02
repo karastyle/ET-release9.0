@@ -1,0 +1,16 @@
+﻿{
+  "name": "cn.etetet.kdb",
+  "displayName": "ET.KDB",
+  "version": "0.0.0",
+  "unity": "2022.3",
+  "description": "数据库",
+  "author": {
+    "name": "KDB"
+  },
+  "repository": {},
+  "relatedPackages": {},
+  "dependencies": {},
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/@ET-Packages"
+  }
+}

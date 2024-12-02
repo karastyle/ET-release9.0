@@ -1,0 +1,30 @@
+{
+    "name": "ET.Model",
+    "rootNamespace": "ET",
+    "references": [
+        "ET.Core",
+        "ET.Kara",
+        "ET.KDB",
+        "ET.KK",
+        "ET.MemoryPack",
+        "ET.Recast",
+        "ET.SourceGeneratorAttribute",
+        "ET.YooAssets",
+        "Unity.Mathematics"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": true,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [
+        "INITED",
+        "IS_COMPILING || UNITY_EDITOR"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": true,
+    "optionalUnityReferences": [],
+    "additionalReferences": [],
+    "compilerOptions": ""
+}

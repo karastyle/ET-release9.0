@@ -1,0 +1,14 @@
+E:\UnityProject\ET-release9.0\Bin\ET.Loader.deps.json
+E:\UnityProject\ET-release9.0\Bin\ET.Loader.dll
+E:\UnityProject\ET-release9.0\Bin\ET.Loader.pdb
+E:\UnityProject\ET-release9.0\Packages\cn.etetet.loader\DotNet~\obj\Debug\ET.Loader.csproj.AssemblyReference.cache
+E:\UnityProject\ET-release9.0\Packages\cn.etetet.loader\DotNet~\obj\Debug\ET.Loader.GeneratedMSBuildEditorConfig.editorconfig
+E:\UnityProject\ET-release9.0\Packages\cn.etetet.loader\DotNet~\obj\Debug\ET.Loader.AssemblyInfoInputs.cache
+E:\UnityProject\ET-release9.0\Packages\cn.etetet.loader\DotNet~\obj\Debug\ET.Loader.AssemblyInfo.cs
+E:\UnityProject\ET-release9.0\Packages\cn.etetet.loader\DotNet~\obj\Debug\ET.Loader.csproj.CoreCompileInputs.cache
+E:\UnityProject\ET-release9.0\Packages\cn.etetet.loader\DotNet~\obj\Debug\ET.Loader.csproj.Up2Date
+E:\UnityProject\ET-release9.0\Packages\cn.etetet.loader\DotNet~\obj\Debug\ET.Loader.dll
+E:\UnityProject\ET-release9.0\Packages\cn.etetet.loader\DotNet~\obj\Debug\refint\ET.Loader.dll
+E:\UnityProject\ET-release9.0\Packages\cn.etetet.loader\DotNet~\obj\Debug\ET.Loader.pdb
+E:\UnityProject\ET-release9.0\Packages\cn.etetet.loader\DotNet~\obj\Debug\ref\ET.Loader.dll
+E:\UnityProject\ET-release9.0\Packages\cn.etetet.loader\DotNet~\obj\Debug\ET.Loader.sourcelink.json
