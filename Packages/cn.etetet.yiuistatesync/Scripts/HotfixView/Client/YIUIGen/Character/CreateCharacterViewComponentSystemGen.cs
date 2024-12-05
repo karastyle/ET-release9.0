@@ -34,9 +34,15 @@ namespace ET.Client
             self.UIView.ViewWindowType = EViewWindowType.View;
             self.UIView.StackOption = EViewStackOption.VisibleTween;
 
+            self.u_ComCharacter = self.UIBase.ComponentTable.FindComponent<YIUIFramework.UI3DDisplay>("u_ComCharacter");
+            self.u_ComHeroName = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.InputField>("u_ComHeroName");
             self.u_DataCareer = self.UIBase.DataTable.FindDataValue<YIUIFramework.UIDataValueInt>("u_DataCareer");
             self.u_EventClickSelect = self.UIBase.EventTable.FindEvent<UITaskEventP0>("u_EventClickSelect");
             self.u_EventClickSelectHandle = self.u_EventClickSelect.Add(self,CreateCharacterViewComponent.OnEventClickSelectInvoke);
+            self.u_EventClickHero = self.UIBase.EventTable.FindEvent<UIEventP0>("u_EventClickHero");
+            self.u_EventClickHeroHandle = self.u_EventClickHero.Add(self,CreateCharacterViewComponent.OnEventClickHeroInvoke);
+            self.u_EventClose = self.UIBase.EventTable.FindEvent<UITaskEventP0>("u_EventClose");
+            self.u_EventCloseHandle = self.u_EventClose.Add(self,CreateCharacterViewComponent.OnEventCloseInvoke);
 
         }
     }

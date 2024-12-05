@@ -22,6 +22,13 @@ namespace ET.Client
         public YIUIWindowComponent UIWindow => u_UIWindow;
         public EntityRef<YIUIViewComponent> u_UIView;
         public YIUIViewComponent UIView => u_UIView;
+        public UnityEngine.UI.LoopHorizontalScrollRect u_ComRoleList;
+        public UITaskEventP0 u_EventReady;
+        public UITaskEventHandleP0 u_EventReadyHandle;
+        public const string OnEventReadyInvoke = "SelectCharacterViewComponent.OnEventReadyInvoke";
+        public UITaskEventP0 u_EventBack;
+        public UITaskEventHandleP0 u_EventBackHandle;
+        public const string OnEventBackInvoke = "SelectCharacterViewComponent.OnEventBackInvoke";
 
     }
 }

@@ -1,0 +1,7 @@
+{"dict": [
+[1, {"_t":"HeroConfig","_id":1,"Name":"机器人1","Career":1,"model":"robot"}],
+[2, {"_t":"HeroConfig","_id":2,"Name":"机器人2","Career":2,"model":"robot"}],
+[3, {"_t":"HeroConfig","_id":3,"Name":"机器人3","Career":3,"model":"robot"}],
+[4, {"_t":"HeroConfig","_id":4,"Name":"机器人4","Career":4,"model":"robot"}],
+[5, {"_t":"HeroConfig","_id":5,"Name":"机器人5","Career":5,"model":"robot"}],
+]}

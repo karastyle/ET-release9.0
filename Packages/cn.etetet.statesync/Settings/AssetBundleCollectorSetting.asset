@@ -156,7 +156,7 @@ MonoBehaviour:
         AssetTags: 
         UserData: 
       - CollectPath: Assets/GameRes/YIUI
-        CollectorGUID: 7df93ffc8327ee443a9ffadd3c94bd53
+        CollectorGUID: 
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
@@ -185,5 +185,18 @@ MonoBehaviour:
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 
+    - GroupName: Character
+      GroupDesc: 
+      AssetTags: 
+      ActiveRuleName: EnableGroup
+      Collectors:
+      - CollectPath: Assets/Model/Character
+        CollectorGUID: daec729d469b0b1488d23d12cabdde6c
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectPrefab
         AssetTags: 
         UserData: 

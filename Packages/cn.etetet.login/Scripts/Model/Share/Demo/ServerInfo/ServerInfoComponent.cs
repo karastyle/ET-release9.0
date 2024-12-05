@@ -7,6 +7,5 @@ namespace ET
     public class ServerInfoComponent : Entity, IAwake, IDestroy
     {
         public Dictionary<long, EntityRef<ServerInfo>> dictionary = new();
-        
     }
 }

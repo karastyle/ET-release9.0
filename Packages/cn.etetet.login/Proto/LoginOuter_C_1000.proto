@@ -127,6 +127,7 @@ message RoleInfoProto
 	int64 LastLoginTime = 5;
 	int64 CreateTime = 6;
 	int32 ServerId = 7;
+	int32 HeroId = 8;
 }
 
 //ResponseType R2C_GetRoles
@@ -154,6 +155,7 @@ message C2R_CreateRole // ISessionRequest
 	string Account = 2;
 	string Name = 3;
 	int32 ServerId = 4;
+	int32 HeroId = 5;
 }
 
 message R2C_CreateRole // ISessionResponse

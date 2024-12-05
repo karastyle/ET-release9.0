@@ -59,7 +59,7 @@ namespace ET.Client
             if (select)
             {
                 ServerInfo server = data;
-                self.u_DataCurServerName.SetValue(server.ServerName);
+                self.OnSelectServer(server);
             }
         }
 
@@ -70,9 +70,17 @@ namespace ET.Client
             if (select)
             {
                 ServerInfo server = data;
-                self.u_DataCurServerName.SetValue(server.ServerName);
+                self.OnSelectServer(server);
                 self.u_DataShowServer.SetValue(false);
             }
+        }
+
+        //选服回调
+        private static void OnSelectServer(this SelectServerViewComponent self, ServerInfo server)
+        {
+            self.u_DataCurServerName.SetValue(server.ServerName);
+            PlayerComponent serverInfoComponentSystem = self.Root().GetComponent<PlayerComponent>();
+            serverInfoComponentSystem.ServerId = server.ServerId;
         }
 
         #region YIUIEvent开始

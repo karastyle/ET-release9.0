@@ -44,6 +44,11 @@
                         response.Error = ErrorCode.ERR_RoleNameSame;
                         return;
                     }
+                    
+                    //角色自增id
+                    // var roleInfos = await dbComponent.Query<string>(d => d.Key == request.Name
+                    //         && d.ServerId == request.ServerId);
+                    
 
                     RoleInfo newRoleInfo = session.AddChild<RoleInfo>();
                     newRoleInfo.Name = request.Name;
@@ -52,6 +57,8 @@
                     newRoleInfo.Account = request.Account;
                     newRoleInfo.CreateTime = TimeInfo.Instance.ServerNow();
                     newRoleInfo.LastLoginTime = 0;
+                    newRoleInfo.HeroId = request.HeroId;
+                    newRoleInfo.uid = 1;
 
                     await dbComponent.Save<RoleInfo>(newRoleInfo);
                     response.RoleInfo = newRoleInfo.ToMessage();

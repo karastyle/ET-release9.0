@@ -31,7 +31,7 @@
                 using (await coroutineLockComponent.Wait(CoroutineLockType.CreateRole, request.Account.GetLongHashCode()))
                 {
                     DBComponent dbComponent = session.Root().GetComponent<DBManagerComponent>().GetZoneDB(session.Zone());
-                    var roleInfos = await dbComponent.Query<RoleInfo>(d => d.Id == request.RoleInfoId
+                    var roleInfos = await dbComponent.Query<RoleInfo>(d => d.uid == request.RoleInfoId
                             && d.ServerId == request.ServerId);
                     if (roleInfos == null || roleInfos.Count == 0)
                     {
@@ -43,10 +43,11 @@
                     var roleInfo = roleInfos[0];
                     session.AddChild(roleInfo);
 
+                    //删除角色并不是从数据库删除， 而是改为冻结状态，为了后续可以找回角色
                     roleInfo.State = (int)RoleInfoState.Freeze;
 
                     await dbComponent.Save(roleInfo);
-                    response.DeletedRoleInfoId = roleInfo.Id;
+                    response.DeletedRoleInfoId = roleInfo.uid;
                     
                 }
 

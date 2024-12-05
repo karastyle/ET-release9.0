@@ -12,6 +12,8 @@ namespace ET.Client
     /// </summary>
     public partial class SelectCharacterViewComponent : Entity
     {
-
+        public List<EntityRef<RoleInfo>>                      RoleDataList;
+        public EntityRef<YIUILoopScrollChild> m_RoleLoop;
+        public YIUILoopScrollChild            RoleLoop => m_RoleLoop;
     }
 }

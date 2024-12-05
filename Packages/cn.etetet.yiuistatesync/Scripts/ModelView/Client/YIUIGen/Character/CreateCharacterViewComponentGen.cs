@@ -22,10 +22,18 @@ namespace ET.Client
         public YIUIWindowComponent UIWindow => u_UIWindow;
         public EntityRef<YIUIViewComponent> u_UIView;
         public YIUIViewComponent UIView => u_UIView;
+        public YIUIFramework.UI3DDisplay u_ComCharacter;
+        public UnityEngine.UI.InputField u_ComHeroName;
         public YIUIFramework.UIDataValueInt u_DataCareer;
         public UITaskEventP0 u_EventClickSelect;
         public UITaskEventHandleP0 u_EventClickSelectHandle;
         public const string OnEventClickSelectInvoke = "CreateCharacterViewComponent.OnEventClickSelectInvoke";
+        public UIEventP0 u_EventClickHero;
+        public UIEventHandleP0 u_EventClickHeroHandle;
+        public const string OnEventClickHeroInvoke = "CreateCharacterViewComponent.OnEventClickHeroInvoke";
+        public UITaskEventP0 u_EventClose;
+        public UITaskEventHandleP0 u_EventCloseHandle;
+        public const string OnEventCloseInvoke = "CreateCharacterViewComponent.OnEventCloseInvoke";
 
     }
 }

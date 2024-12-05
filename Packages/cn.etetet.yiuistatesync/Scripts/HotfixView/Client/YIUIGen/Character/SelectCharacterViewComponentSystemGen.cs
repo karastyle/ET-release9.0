@@ -34,6 +34,11 @@ namespace ET.Client
             self.UIView.ViewWindowType = EViewWindowType.View;
             self.UIView.StackOption = EViewStackOption.VisibleTween;
 
+            self.u_ComRoleList = self.UIBase.ComponentTable.FindComponent<UnityEngine.UI.LoopHorizontalScrollRect>("u_ComRoleList");
+            self.u_EventReady = self.UIBase.EventTable.FindEvent<UITaskEventP0>("u_EventReady");
+            self.u_EventReadyHandle = self.u_EventReady.Add(self,SelectCharacterViewComponent.OnEventReadyInvoke);
+            self.u_EventBack = self.UIBase.EventTable.FindEvent<UITaskEventP0>("u_EventBack");
+            self.u_EventBackHandle = self.u_EventBack.Add(self,SelectCharacterViewComponent.OnEventBackInvoke);
 
         }
     }

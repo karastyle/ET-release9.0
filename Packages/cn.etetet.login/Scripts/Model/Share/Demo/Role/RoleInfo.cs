@@ -6,15 +6,24 @@
         Freeze,
     }
 
-    [ChildOf]
-    public class RoleInfo : Entity, IAwake
+    public enum RoleShowType
     {
-        public string Name;
-        public int ServerId;
-        public int State;
-        public string Account;
-        public long LastLoginTime;
-        public long CreateTime;
+        Role = 0,
+        Empty = 1,
+        Lock = 3,
+    }
+
+    [ChildOf]
+    public class RoleInfo : Entity
+    {
+        
+        public string Name { get; set; }
+        public int ServerId { get; set; }
+        public int State { get; set; }
+        public string Account { get; set; }
+        public long LastLoginTime { get; set; }
+        public long CreateTime { get; set; }
+        public int HeroId { get; set; }
 
         public long uid { get; set; }
 
@@ -29,5 +38,9 @@
         public int unitID { get; set; }
         public int level { get; set; }
         public int exp { get; set; }
+
+        public int ShowType { get; set; } = (int)RoleShowType.Role;
     }
+
+ 
 }
