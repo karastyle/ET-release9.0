@@ -18,46 +18,33 @@ namespace ET
 
         }
         
-        public static ServerInfo Get(this ServerInfoComponent self, long key)
+        public static ServerInfo Get(this ServerInfoComponent self, long id)
         {
-            if (!self.dictionary.TryGetValue(key, out EntityRef<ServerInfo> value))
-            {
-                return null;
-            }
-
-            return value;
+            ServerInfo info = self.GetChild<ServerInfo>(id);
+            return info;
         }
 
-        public static void Add(this ServerInfoComponent self, long key, EntityRef<ServerInfo> value)
+        public static void Remove(this ServerInfoComponent self, long id)
         {
-            if (self.dictionary.ContainsKey(key))
-            {
-                self.dictionary[key] = value;
-                return;
-            }
-
-            self.dictionary.Add(key, value);
+            ServerInfo info = self.GetChild<ServerInfo>(id);
+            info?.Dispose();
         }
 
-        public static void Remove(this ServerInfoComponent self, long key)
+        public static void RemoveAll(this ServerInfoComponent self)
         {
-            if (self.dictionary.ContainsKey(key))
+            foreach (var key in self.Children.Keys.ToList())
             {
-                self.dictionary.Remove(key);
+                self.Children.Remove(key);
             }
-        }
-
-        public static bool IsExist(this ServerInfoComponent self, long key)
-        {
-            return self.dictionary.ContainsKey(key);
         }
 
         public static List<EntityRef<ServerInfo>> GetServerList(this ServerInfoComponent self)
         {
             List<EntityRef<ServerInfo>> list = new();
-            foreach (var server in self.dictionary)
+            foreach (Entity child in self.Children.Values)
             {
-                list.Add(server.Value);
+                ServerInfo info = child as ServerInfo;
+                list.Add(info);
             }
             return list;
         }

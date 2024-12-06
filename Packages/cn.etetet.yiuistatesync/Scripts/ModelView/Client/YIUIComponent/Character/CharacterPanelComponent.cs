@@ -10,7 +10,7 @@ namespace ET.Client
     /// Date    2024.12.2
     /// Desc
     /// </summary>
-    public partial class CharacterPanelComponent : Entity
+    public partial class CharacterPanelComponent : Entity, IDynamicEvent<SwitchSelectCharacterEvent>, IDynamicEvent<SwitchCreateCharacterEvent>
     {
 
     }

@@ -10,7 +10,7 @@ namespace ET.Client
     /// Date    2024.12.2
     /// Desc
     /// </summary>
-    public partial class SelectCharacterViewComponent : Entity
+    public partial class SelectCharacterViewComponent : Entity, IDynamicEvent<DeleteRoleEvent>
     {
         public List<EntityRef<RoleInfo>>                      RoleDataList;
         public EntityRef<YIUILoopScrollChild> m_RoleLoop;

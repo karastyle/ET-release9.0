@@ -31,7 +31,7 @@
                 using (await coroutineLockComponent.Wait(CoroutineLockType.CreateRole, request.Account.GetLongHashCode()))
                 {
                     DBComponent dbComponent = session.Root().GetComponent<DBManagerComponent>().GetZoneDB(session.Zone());
-                    var roleInfos = await dbComponent.Query<RoleInfo>(d => d.uid == request.RoleInfoId
+                    var roleInfos = await dbComponent.Query<RoleInfo>(d => d.Id == request.RoleInfoId
                             && d.ServerId == request.ServerId);
                     if (roleInfos == null || roleInfos.Count == 0)
                     {
@@ -47,8 +47,9 @@
                     roleInfo.State = (int)RoleInfoState.Freeze;
 
                     await dbComponent.Save(roleInfo);
-                    response.DeletedRoleInfoId = roleInfo.uid;
+                    response.DeletedRoleInfoId = roleInfo.Id;
                     
+                    session.RemoveChild(roleInfo.Id);
                 }
 
             }

@@ -63,8 +63,11 @@ namespace ET.Client
                 TipsHelper.OpenSync<TipsTextViewComponent>("删除角色失败");
                 return;
             }
-            
+
             TipsHelper.OpenSync<TipsTextViewComponent>("删除角色成功");
+
+            //发出事件
+            await self.DynamicEvent(new DeleteRoleEvent());
         }
 
         #region YIUIEvent开始
@@ -76,13 +79,14 @@ namespace ET.Client
             if (self.u_DataCardState.GetValue() == (int)RoleShowType.Empty)
             {
                 //创建角色
-                YIUIMgrComponent.Inst.GetPanel<LoginPanelComponent>().UIPanel.OpenViewAsync<CreateCharacterViewComponent>().NoContext();
+                self.DynamicEvent(new SwitchCreateCharacterEvent()).NoContext();
             }
         }
 
         [YIUIInvoke(CharacterCardItemComponent.OnEventDeleteInvoke)]
         private static void OnEventDeleteInvoke(this CharacterCardItemComponent self)
         {
+            Log.Debug("Delete role " + self.u_DataName);
             //删除角色
             self.DeleteRole().NoContext();
         }

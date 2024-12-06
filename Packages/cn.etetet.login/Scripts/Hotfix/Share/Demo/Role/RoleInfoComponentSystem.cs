@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 
 namespace ET
 {
@@ -15,57 +16,38 @@ namespace ET
         {
         }
 
-        public static RoleInfo Get(this RoleInfoComponent self, long key)
+        public static RoleInfo Get(this RoleInfoComponent self, long id)
         {
-            if (!self.dictionary.TryGetValue(key, out EntityRef<RoleInfo> value))
-            {
-                return null;
-            }
-
-            return value;
+            RoleInfo info = self.GetChild<RoleInfo>(id);
+            return info;
         }
 
-        public static void Add(this RoleInfoComponent self, long key, EntityRef<RoleInfo> value)
+        public static void Remove(this RoleInfoComponent self, long id)
         {
-            if (self.dictionary.ContainsKey(key))
-            {
-                self.dictionary[key] = value;
-                return;
-            }
-
-            self.dictionary.Add(key, value);
+            RoleInfo info = self.GetChild<RoleInfo>(id);
+            info?.Dispose();
         }
 
-        public static void Remove(this RoleInfoComponent self, long key)
-        {
-            if (self.dictionary.ContainsKey(key))
-            {
-                self.dictionary.Remove(key);
-            }
-        }
-        
         public static void RemoveAll(this RoleInfoComponent self)
         {
-            self.dictionary.Clear();
-        }
-
-        public static bool IsExist(this RoleInfoComponent self, long key)
-        {
-            return self.dictionary.ContainsKey(key);
+            foreach (var key in self.Children.Keys.ToList())
+            {
+                self.Children.Remove(key);
+            }
         }
 
         public static List<EntityRef<RoleInfo>> GetRoleList(this RoleInfoComponent self)
         {
             List<EntityRef<RoleInfo>> list = new();
-            foreach (var role in self.dictionary)
+            foreach (Entity child in self.Children.Values)
             {
-                RoleInfo roleInfo = role.Value;
+                RoleInfo roleInfo = child as RoleInfo;
+                //非冻结状态的角色
                 if (roleInfo.State != (int)RoleInfoState.Freeze)
                 {
-                    list.Add(role.Value);
+                    list.Add(roleInfo);
                 }
             }
-
             return list;
         }
     }

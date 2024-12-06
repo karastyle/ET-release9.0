@@ -129,10 +129,8 @@ namespace ET.Client
             {
                 foreach (var serverProto in r2CGetServerInfos.ServerInfosList)
                 {
-                    ServerInfo serverInfo = new ServerInfo();
+                    ServerInfo serverInfo = serverInfoComponentSystem.AddChildWithId<ServerInfo>(serverProto.Id);
                     serverInfo.FromMessage(serverProto);
-                    serverInfoComponentSystem.AddChildWithId<ServerInfo>(serverProto.Id);
-                    serverInfoComponentSystem.Add(serverProto.Id, serverInfo);
                 }
             }
 
@@ -168,9 +166,8 @@ namespace ET.Client
             {
                 foreach (var roleProto in r2CGetRoles.RoleInfo)
                 {
-                    RoleInfo roleInfo = new RoleInfo();
+                    RoleInfo roleInfo = roleInfoComponent.AddChildWithId<RoleInfo>(roleProto.Id);
                     roleInfo.FromMessage(roleProto);
-                    roleInfoComponent.Add(roleProto.Id, roleInfo);
                 }
             }
             

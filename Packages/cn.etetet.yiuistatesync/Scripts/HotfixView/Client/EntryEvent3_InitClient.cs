@@ -16,6 +16,7 @@ namespace ET.Client
             root.AddComponent<CurrentScenesComponent>();
             root.AddComponent<ServerInfoComponent>();
             root.AddComponent<RoleInfoComponent>();
+            root.AddComponent<KeyBoardComponent>();
 
             var result = await root.AddComponent<YIUIMgrComponent>().Initialize();
             if (!result)

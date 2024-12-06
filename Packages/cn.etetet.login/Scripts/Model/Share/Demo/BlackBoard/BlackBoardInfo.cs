@@ -1,8 +1,16 @@
 ﻿namespace ET
 {
-    public class BlackBoardInfo: Entity
+    //黑板数据
+    public enum BlackBoardEnum
     {
-        public long RoleIncrementId { get; set; }
+        IncrementRoleId = 0  //角色自增id
+    }
+    
+    [ChildOf]
+    public class BlackBoardInfo: Entity, IAwake
+    {
+        public int Key { get; set; }
+        public long Value { get; set; }
     }
 }
 

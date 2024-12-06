@@ -49,6 +49,20 @@ namespace ET.Client
             }
             return true;
         }
+        
+        [EntitySystem]
+        private static async ETTask DynamicEvent(this CharacterPanelComponent self, SwitchSelectCharacterEvent message)
+        {
+            //选角界面
+            await self.UIPanel.OpenViewAsync<SelectCharacterViewComponent>();
+        }
+        
+        [EntitySystem]
+        private static async ETTask DynamicEvent(this CharacterPanelComponent self, SwitchCreateCharacterEvent message)
+        {
+            //创角界面
+            await self.UIPanel.OpenViewAsync<CreateCharacterViewComponent>();
+        }
 
         #region YIUIEvent开始
         #endregion YIUIEvent结束

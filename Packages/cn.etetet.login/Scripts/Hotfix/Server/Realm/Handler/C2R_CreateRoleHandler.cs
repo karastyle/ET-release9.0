@@ -46,11 +46,22 @@
                     }
                     
                     //角色自增id
-                    // var roleInfos = await dbComponent.Query<string>(d => d.Key == request.Name
-                    //         && d.ServerId == request.ServerId);
-                    
+                    var blackBoardInfos = await dbComponent.Query<BlackBoardInfo>(d => d.Key == (int)BlackBoardEnum.IncrementRoleId);
+                    BlackBoardInfo blackBoardInfo = null;
+                    if (blackBoardInfos.Count == 0)
+                    {
+                        //如果没有就创建一个 ， 从1000开始自增
+                        blackBoardInfo = session.AddChild<BlackBoardInfo>();
+                        blackBoardInfo.Key = (int)BlackBoardEnum.IncrementRoleId;
+                        blackBoardInfo.Value = 1000;
+                    }
+                    else
+                    {
+                        blackBoardInfo = blackBoardInfos[0];
+                    }
 
-                    RoleInfo newRoleInfo = session.AddChild<RoleInfo>();
+                    long newRoleId = blackBoardInfo.Value + 1;
+                    RoleInfo newRoleInfo = session.AddChildWithId<RoleInfo>(newRoleId);
                     newRoleInfo.Name = request.Name;
                     newRoleInfo.State = (int)RoleInfoState.Normal;
                     newRoleInfo.ServerId = request.ServerId;
@@ -58,10 +69,15 @@
                     newRoleInfo.CreateTime = TimeInfo.Instance.ServerNow();
                     newRoleInfo.LastLoginTime = 0;
                     newRoleInfo.HeroId = request.HeroId;
-                    newRoleInfo.uid = 1;
 
-                    await dbComponent.Save<RoleInfo>(newRoleInfo);
                     response.RoleInfo = newRoleInfo.ToMessage();
+                    
+                    await dbComponent.Save<RoleInfo>(newRoleInfo);
+                    session.RemoveChild(newRoleInfo.Id);
+
+                    blackBoardInfo.Value = newRoleId;
+                    await dbComponent.Save<BlackBoardInfo>(blackBoardInfo);
+                    session.RemoveChild(blackBoardInfo.Id);
                 }
             }
         }

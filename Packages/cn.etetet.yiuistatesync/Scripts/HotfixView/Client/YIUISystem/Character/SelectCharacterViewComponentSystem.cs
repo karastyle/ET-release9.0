@@ -29,13 +29,20 @@ namespace ET.Client
         [EntitySystem]
         private static async ETTask<bool> YIUIOpen(this SelectCharacterViewComponent self)
         {
+            await self.RefreshRoleList();
+            await ETTask.CompletedTask;
+            return true;
+        }
+
+        private static async ETTask RefreshRoleList(this SelectCharacterViewComponent self)
+        {
             //每次打开都要请求角色列表
             int errorCode = await LoginHelper.GetRoleList(self.Root());
             if (errorCode != ErrorCode.ERR_Success)
             {
                 //弹窗提示获取角色列表失败
                 TipsHelper.OpenSync<TipsTextViewComponent>("获取角色列表失败");
-                return false;
+                return;
             }
             
             RoleInfoComponent roleInfoComponent = self.Root().GetComponent<RoleInfoComponent>();
@@ -51,11 +58,8 @@ namespace ET.Client
             //设置滚动列表
             self.RoleLoop.ClearSelect();
             self.RoleLoop.SetDataRefresh(self.RoleDataList, 0).NoContext();;
-            
-            await ETTask.CompletedTask;
-            return true;
         }
-
+        
         [EntitySystem]
         private static void YIUILoopRenderer(this SelectCharacterViewComponent self, CharacterCardItemComponent item, EntityRef<RoleInfo> data, int index, bool select)
         {
@@ -73,6 +77,13 @@ namespace ET.Client
             if (select)
             {
             }
+        }
+        
+        [EntitySystem]
+        private static async ETTask DynamicEvent(this SelectCharacterViewComponent self, DeleteRoleEvent message)
+        {
+            //删除角色消息， 重新拉去列表刷新一下
+            await self.RefreshRoleList();
         }
         
         #region YIUIEvent开始

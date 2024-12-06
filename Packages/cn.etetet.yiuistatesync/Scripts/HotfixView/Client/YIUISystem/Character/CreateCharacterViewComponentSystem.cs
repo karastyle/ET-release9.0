@@ -72,8 +72,8 @@ namespace ET.Client
                 TipsHelper.OpenSync<TipsTextViewComponent>("创建角色失败");
                 return;
             }
-            
-            await YIUIMgrComponent.Inst.GetPanel<CharacterPanelComponent>().UIPanel.OpenViewAsync<SelectCharacterViewComponent>();
+
+            await self.DynamicEvent(new SwitchSelectCharacterEvent());
         }
         
         //选中页签
@@ -83,11 +83,11 @@ namespace ET.Client
             self.OnSelect().NoContext();
         }
         
-        //关闭
+        //切到选角界面
         [YIUIInvoke(CreateCharacterViewComponent.OnEventCloseInvoke)]
         private static async ETTask OnEventCloseInvoke(this CreateCharacterViewComponent self)
         {
-            self.UIView.Close();
+            await self.DynamicEvent(new SwitchSelectCharacterEvent());
             await ETTask.CompletedTask;
         }
         #endregion YIUIEvent结束

@@ -5,7 +5,6 @@
     {
         public static void FromMessage(this RoleInfo self, RoleInfoProto roleInfoProto)
         {
-            self.uid = roleInfoProto.Id;
             self.Name = roleInfoProto.Name;
             self.State = roleInfoProto.State;
             self.Account = roleInfoProto.Account;
@@ -18,7 +17,7 @@
         public static RoleInfoProto ToMessage(this RoleInfo self)
         {
             RoleInfoProto roleInfoProto = RoleInfoProto.Create();
-            roleInfoProto.Id = self.uid;
+            roleInfoProto.Id = self.Id;
             roleInfoProto.Name = self.Name;
             roleInfoProto.State = self.State;
             roleInfoProto.Account = self.Account;
@@ -28,10 +27,16 @@
             roleInfoProto.HeroId = self.HeroId;
             return roleInfoProto;
         }
-        
+
         public static string ToString(this RoleInfo self)
         {
-            return $"  uid:{self.uid}\t NickName:{self.Name}\t level:{self.level}\t exp:{self.exp}";
+            return $"  uid:{self.Id}\t NickName:{self.Name}\t level:{self.level}\t exp:{self.exp}";
+        }
+        
+        [EntitySystem]
+        private static void Awake(this ET.RoleInfo self)
+        {
+
         }
     }
 }
