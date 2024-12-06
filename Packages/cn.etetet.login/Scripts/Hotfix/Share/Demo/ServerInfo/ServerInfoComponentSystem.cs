@@ -26,15 +26,16 @@ namespace ET
 
         public static void Remove(this ServerInfoComponent self, long id)
         {
+            //Dispose 会自动把Entity从父节点移除
             ServerInfo info = self.GetChild<ServerInfo>(id);
             info?.Dispose();
         }
 
         public static void RemoveAll(this ServerInfoComponent self)
         {
-            foreach (var key in self.Children.Keys.ToList())
+            foreach (var value in self.Children.Values.ToList())
             {
-                self.Children.Remove(key);
+                value?.Dispose();
             }
         }
 

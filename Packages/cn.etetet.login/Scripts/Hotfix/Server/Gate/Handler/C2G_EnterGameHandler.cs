@@ -48,7 +48,7 @@ namespace ET.Server
                             //给map上的 unit 发送二次登录的消息
                             G2M_SecondLogin g2MSecondLogin = G2M_SecondLogin.Create();
                             IResponse reqEnter = await session.Root().GetComponent<MessageLocationSenderComponent>().Get(LocationType.Unit)
-                                    .Call(player.UnitId, g2MSecondLogin);
+                                    .Call(player.RoleId, g2MSecondLogin);
                             if (reqEnter.Error == ErrorCode.ERR_Success)
                             {
                                 Log.Console("二次登录逻辑，补发场景的消息");
@@ -90,7 +90,7 @@ namespace ET.Server
                         // 等到一帧的最后面再传送，先让G2C_EnterMap返回，否则传送消息可能比G2C_EnterMap还早
                         TransferHelper.TransferAtFrameFinish(unit, startSceneConfig.ActorId, startSceneConfig.Name).NoContext();
                         
-                        player.UnitId = unitId;
+                        player.RoleId = unitId;
                         response.MyUnitId = unitId;
                         player.PlayerState = PlayerState.Game;
                     }

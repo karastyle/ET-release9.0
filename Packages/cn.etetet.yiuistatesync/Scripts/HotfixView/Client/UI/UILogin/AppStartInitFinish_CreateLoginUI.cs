@@ -6,7 +6,10 @@ namespace ET.Client
 	{
 		protected override async ETTask Run(Scene root, AppStartInitFinish args)
 		{
-			await YIUIMgrComponent.Inst.Root.OpenPanelAsync<LoginPanelComponent>();
+			//直接进入LoginMode
+			ModeMgr modeMgr = root.GetComponent<ModeMgr>();
+			modeMgr.EnterGameMode(CPlayMode.Login);
+			await ETTask.CompletedTask;
 		}
 	}
 }

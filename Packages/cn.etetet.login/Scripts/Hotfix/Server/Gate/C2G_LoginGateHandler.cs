@@ -24,7 +24,6 @@ namespace ET.Server
             if (player == null)
             {
                 player = playerComponent.AddChild<Player, string>(account);
-                playerComponent.Add(player);
                 PlayerSessionComponent playerSessionComponent = player.AddComponent<PlayerSessionComponent>();
                 playerSessionComponent.AddComponent<MailBoxComponent, int>(MailBoxType.GateSession);
                 await playerSessionComponent.AddLocation(LocationType.GateSession);

@@ -62,14 +62,13 @@ namespace ET.Server
                         return;
                     }
 
+                    //Player 存储了账号，玩家登录的角色id
                     PlayerComponent playerComponent = root.GetComponent<PlayerComponent>();
                     Player player = playerComponent.GetByAccount(account);
                     if (player == null)
                     {
-                        player = playerComponent.AddChildWithId<Player, string>(request.RoleId, account);
-                        player.UnitId = request.RoleId;
-                        
-                        playerComponent.Add(player);
+                        player = playerComponent.AddChild<Player, string>(account);
+                        player.RoleId = request.RoleId;
                         
                         PlayerSessionComponent playerSessionComponent = player.AddComponent<PlayerSessionComponent>();
                         playerSessionComponent.AddComponent<MailBoxComponent, int>(MailBoxType.GateSession);

@@ -63,6 +63,14 @@ namespace ET.Client
             //创角界面
             await self.UIPanel.OpenViewAsync<CreateCharacterViewComponent>();
         }
+        
+        [EntitySystem]
+        private static async ETTask DynamicEvent(this CharacterPanelComponent self, CloseCharacterEvent message)
+        {
+            //创角界面
+            await self.UIPanel.CloseAsync();
+        }
+        
 
         #region YIUIEvent开始
         #endregion YIUIEvent结束

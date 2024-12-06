@@ -38,7 +38,7 @@ namespace ET.Client
                 HeroConfigCategory.Instance.GetAll().TryGetValue(roleInfo.HeroId, out HeroConfig heroConfig);
                 if (heroConfig != null)
                 {
-                    Log.Debug("hero career: " + heroConfig.Name);
+                    Log.Info("hero career: " + heroConfig.Name);
                     self.u_DataCareer.SetValue(heroConfig.Name);
                 }
                 else
@@ -75,7 +75,7 @@ namespace ET.Client
         [YIUIInvoke(CharacterCardItemComponent.OnEventSelectInvoke)]
         private static void OnEventSelectInvoke(this CharacterCardItemComponent self)
         {
-            Log.Debug("CardItem click");
+            Log.Info("CardItem click");
             if (self.u_DataCardState.GetValue() == (int)RoleShowType.Empty)
             {
                 //创建角色
@@ -86,7 +86,7 @@ namespace ET.Client
         [YIUIInvoke(CharacterCardItemComponent.OnEventDeleteInvoke)]
         private static void OnEventDeleteInvoke(this CharacterCardItemComponent self)
         {
-            Log.Debug("Delete role " + self.u_DataName);
+            Log.Info("Delete role " + self.u_DataName);
             //删除角色
             self.DeleteRole().NoContext();
         }

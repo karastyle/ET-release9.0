@@ -79,7 +79,7 @@ namespace ET.Client
         private static void OnSelectServer(this SelectServerViewComponent self, ServerInfo server)
         {
             self.u_DataCurServerName.SetValue(server.ServerName);
-            PlayerComponent serverInfoComponentSystem = self.Root().GetComponent<PlayerComponent>();
+            AccountComponent serverInfoComponentSystem = self.Root().GetComponent<AccountComponent>();
             serverInfoComponentSystem.ServerId = server.ServerId;
         }
 

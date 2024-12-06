@@ -91,7 +91,9 @@ namespace ET.Client
         [YIUIInvoke(SelectCharacterViewComponent.OnEventBackInvoke)]
         private static async ETTask OnEventBackInvoke(this SelectCharacterViewComponent self)
         {
-            
+            Log.Info("Close Character View");
+            //关闭选角界面
+            self.DynamicEvent(new CloseCharacterEvent()).NoContext();
             await ETTask.CompletedTask;
         }
         

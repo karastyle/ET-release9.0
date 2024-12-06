@@ -14,6 +14,7 @@
         
         public PlayerState PlayerState { get; set; }
 
-        public long UnitId { get; set; }
+        //当前登录的角色
+        public long RoleId { get; set; }
     }
 }

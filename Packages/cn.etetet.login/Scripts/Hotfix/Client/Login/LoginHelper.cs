@@ -21,8 +21,8 @@ namespace ET.Client
             Log.Debug("登录成功");
             string Token = response.Token;
             //记录token
-            root.GetComponent<PlayerComponent>().Token = Token;
-            root.GetComponent<PlayerComponent>().Account = account;
+            root.GetComponent<AccountComponent>().Token = Token;
+            root.GetComponent<AccountComponent>().Account = account;
 
             return response.Error;
 
@@ -107,15 +107,15 @@ namespace ET.Client
         public static async ETTask<int> GetServerList(Scene root)
         {
             //拿到账号信息
-            PlayerComponent playerComponent = root.GetComponent<PlayerComponent>();
+            AccountComponent accountComponent = root.GetComponent<AccountComponent>();
         
             //发送网络消息的组件
             ClientSenderComponent clientSenderComponent = root.GetComponent<ClientSenderComponent>();
         
             //获取服务器列表
             C2R_GetServerInfos c2RGetServerInfos = C2R_GetServerInfos.Create();
-            c2RGetServerInfos.Account = playerComponent.Account;
-            c2RGetServerInfos.Token = playerComponent.Token;
+            c2RGetServerInfos.Account = accountComponent.Account;
+            c2RGetServerInfos.Token = accountComponent.Token;
             R2C_GetServerInfos r2CGetServerInfos = await clientSenderComponent.Call(c2RGetServerInfos) as R2C_GetServerInfos;
             if (r2CGetServerInfos.Error != ErrorCode.ERR_Success)
             {
@@ -141,16 +141,16 @@ namespace ET.Client
         public static async ETTask<int> GetRoleList(Scene root)
         {
             //拿到账号信息
-            PlayerComponent playerComponent = root.GetComponent<PlayerComponent>();
+            AccountComponent accountComponent = root.GetComponent<AccountComponent>();
         
             //发送网络消息的组件
             ClientSenderComponent clientSenderComponent = root.GetComponent<ClientSenderComponent>();
 
             //获取区服角色列表
             C2R_GetRoles c2RGetRoles = C2R_GetRoles.Create();
-            c2RGetRoles.Token = playerComponent.Token;
-            c2RGetRoles.Account = playerComponent.Account;
-            c2RGetRoles.ServerId = playerComponent.ServerId;
+            c2RGetRoles.Token = accountComponent.Token;
+            c2RGetRoles.Account = accountComponent.Account;
+            c2RGetRoles.ServerId = accountComponent.ServerId;
             R2C_GetRoles r2CGetRoles = await clientSenderComponent.Call(c2RGetRoles) as R2C_GetRoles;
             if (r2CGetRoles.Error != ErrorCode.ERR_Success)
             {
@@ -178,16 +178,16 @@ namespace ET.Client
         public static async ETTask<int> CreateRole(Scene root, int heroId, string name)
         {
             //拿到账号信息
-            PlayerComponent playerComponent = root.GetComponent<PlayerComponent>();
+            AccountComponent accountComponent = root.GetComponent<AccountComponent>();
         
             //发送网络消息的组件
             ClientSenderComponent clientSenderComponent = root.GetComponent<ClientSenderComponent>();
 
             //无角色， 创建角色 
             C2R_CreateRole c2RCreateRole = C2R_CreateRole.Create();
-            c2RCreateRole.Token = playerComponent.Token;
-            c2RCreateRole.Account = playerComponent.Account;
-            c2RCreateRole.ServerId = playerComponent.ServerId;
+            c2RCreateRole.Token = accountComponent.Token;
+            c2RCreateRole.Account = accountComponent.Account;
+            c2RCreateRole.ServerId = accountComponent.ServerId;
             c2RCreateRole.Name = name;
             c2RCreateRole.HeroId = heroId;
             
@@ -205,16 +205,16 @@ namespace ET.Client
         public static async ETTask<int> DeleteRole(Scene root, long roleId)
         {
             //拿到账号信息
-            PlayerComponent playerComponent = root.GetComponent<PlayerComponent>();
+            AccountComponent accountComponent = root.GetComponent<AccountComponent>();
         
             //发送网络消息的组件
             ClientSenderComponent clientSenderComponent = root.GetComponent<ClientSenderComponent>();
 
             //无角色， 创建角色 
             C2R_DeleteRole c2RDeleteRole = C2R_DeleteRole.Create();
-            c2RDeleteRole.Token = playerComponent.Token;
-            c2RDeleteRole.Account = playerComponent.Account;
-            c2RDeleteRole.ServerId = playerComponent.ServerId;
+            c2RDeleteRole.Token = accountComponent.Token;
+            c2RDeleteRole.Account = accountComponent.Account;
+            c2RDeleteRole.ServerId = accountComponent.ServerId;
             c2RDeleteRole.RoleInfoId = roleId;
             
             R2C_DeleteRole r2CDeleteRole = await clientSenderComponent.Call(c2RDeleteRole) as R2C_DeleteRole;

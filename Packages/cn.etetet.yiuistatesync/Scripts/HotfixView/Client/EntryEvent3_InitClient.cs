@@ -12,11 +12,12 @@ namespace ET.Client
         {
             root.AddComponent<GlobalComponent>();
             root.AddComponent<ResourcesLoaderComponent>();
-            root.AddComponent<PlayerComponent>();
+            root.AddComponent<AccountComponent>();
             root.AddComponent<CurrentScenesComponent>();
             root.AddComponent<ServerInfoComponent>();
             root.AddComponent<RoleInfoComponent>();
             root.AddComponent<KeyBoardComponent>();
+            ModeMgr modeMgr = root.AddComponent<ModeMgr>();
 
             var result = await root.AddComponent<YIUIMgrComponent>().Initialize();
             if (!result)

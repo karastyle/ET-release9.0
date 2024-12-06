@@ -45,4 +45,8 @@
     //切到创建界面
     public struct SwitchCreateCharacterEvent
     {}
+    
+    //关闭选角界面
+    public struct CloseCharacterEvent
+    {}
 }
