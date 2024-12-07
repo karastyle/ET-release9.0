@@ -12,10 +12,10 @@ namespace ET.Client
         {
             root.AddComponent<GlobalComponent>();
             root.AddComponent<ResourcesLoaderComponent>();
-            root.AddComponent<AccountComponent>();
+            root.AddComponent<AccountModel>();
             root.AddComponent<CurrentScenesComponent>();
-            root.AddComponent<ServerInfoComponent>();
-            root.AddComponent<RoleInfoComponent>();
+            root.AddComponent<ServerInfoModel>();
+            root.AddComponent<RoleUnitModel>();
             root.AddComponent<KeyBoardComponent>();
             ModeMgr modeMgr = root.AddComponent<ModeMgr>();
 

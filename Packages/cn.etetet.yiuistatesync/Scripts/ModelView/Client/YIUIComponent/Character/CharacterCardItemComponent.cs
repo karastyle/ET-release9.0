@@ -12,6 +12,6 @@ namespace ET.Client
     /// </summary>
     public partial class CharacterCardItemComponent : Entity
     {
-        public EntityRef<RoleInfo> data { get; set; }
+        public EntityRef<RoleUnit> data { get; set; }
     }
 }

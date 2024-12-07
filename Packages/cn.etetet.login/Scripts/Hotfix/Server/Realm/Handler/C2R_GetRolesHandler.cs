@@ -1,7 +1,7 @@
 ﻿namespace ET.Server
 {
     [MessageSessionHandler(SceneType.Realm)]
-    [FriendOf(typeof(RoleInfo))]
+    [FriendOf(typeof(RoleUnit))]
     public class C2R_GetRolesHandler : MessageSessionHandler<C2R_GetRoles, R2C_GetRoles>
     {
         protected override async ETTask Run(Session session, C2R_GetRoles request, R2C_GetRoles response)
@@ -29,7 +29,7 @@
                 using (await coroutineLockComponent.Wait(CoroutineLockType.CreateRole, request.Account.GetLongHashCode()))
                 {
                     DBComponent dbComponent = session.Root().GetComponent<DBManagerComponent>().GetZoneDB(session.Zone());
-                    var roleInfos = await dbComponent.Query<RoleInfo>(d => d.Account == request.Account
+                    var roleInfos = await dbComponent.Query<RoleUnit>(d => d.Account == request.Account
                             && d.ServerId == request.ServerId
                             && d.State == (int)RoleInfoState.Normal);
                     if (roleInfos == null || roleInfos.Count == 0)

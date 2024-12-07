@@ -1,7 +1,7 @@
 ﻿namespace ET.Server
 {
     [MessageSessionHandler(SceneType.Realm)]
-    [FriendOf(typeof(RoleInfo))]
+    [FriendOf(typeof(RoleUnit))]
     public class C2R_DeleteRoleHandler : MessageSessionHandler<C2R_DeleteRole, R2C_DeleteRole>
     {
         protected override async ETTask Run(Session session, C2R_DeleteRole request, R2C_DeleteRole response)
@@ -31,7 +31,7 @@
                 using (await coroutineLockComponent.Wait(CoroutineLockType.CreateRole, request.Account.GetLongHashCode()))
                 {
                     DBComponent dbComponent = session.Root().GetComponent<DBManagerComponent>().GetZoneDB(session.Zone());
-                    var roleInfos = await dbComponent.Query<RoleInfo>(d => d.Id == request.RoleInfoId
+                    var roleInfos = await dbComponent.Query<RoleUnit>(d => d.Id == request.RoleInfoId
                             && d.ServerId == request.ServerId);
                     if (roleInfos == null || roleInfos.Count == 0)
                     {

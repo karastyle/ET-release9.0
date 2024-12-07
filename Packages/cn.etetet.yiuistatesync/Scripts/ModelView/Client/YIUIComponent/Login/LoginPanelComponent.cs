@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace ET.Client
 {
-    public partial class LoginPanelComponent : Entity
+    public partial class LoginPanelComponent : Entity, IDynamicEvent<SwitchSelectServerEvent>
     {
       
     }

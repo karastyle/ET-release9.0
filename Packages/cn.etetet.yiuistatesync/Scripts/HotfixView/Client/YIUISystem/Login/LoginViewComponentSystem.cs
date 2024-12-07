@@ -36,22 +36,9 @@ namespace ET.Client
         private static async ETTask OnEventLoginInvoke(this LoginViewComponent self)
         {
             Log.Info($"登录");
-            GlobalComponent globalComponent = self.Root().GetComponent<GlobalComponent>();
-            //对于异步逻辑，如果没有调用的地方也需要处理逻辑，那么可以抛事件。 像这里是直接调用的，可以用返回值来处理逻辑。
-            int errorCode = await LoginHelper.Login(self.Root(),
-                globalComponent.GlobalConfig.Address,
-                self.u_ComAccount.text,
-                self.u_ComPassword.text);
-
-            if (errorCode == ErrorCode.ERR_Success)
-            {
-                //登录成功，  进入选服
-                await YIUIMgrComponent.Inst.GetPanel<LoginPanelComponent>().UIPanel.OpenViewAsync<SelectServerViewComponent>();
-            }
-            else
-            {
-                //登录失败，弹窗提示
-            }
+            await self.DynamicEvent(new LoginGameEvent(self.u_ComAccount.text, self.u_ComPassword.text));
+            
+            await ETTask.CompletedTask;
         }
         #endregion YIUIEvent结束
     }

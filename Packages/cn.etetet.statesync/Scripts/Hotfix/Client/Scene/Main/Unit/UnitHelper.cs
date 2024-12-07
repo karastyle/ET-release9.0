@@ -4,15 +4,15 @@
     {
         public static Unit GetMyUnitFromClientScene(Scene root)
         {
-            AccountComponent accountComponent = root.GetComponent<AccountComponent>();
+            AccountModel accountModel = root.GetComponent<AccountModel>();
             Scene currentScene = root.GetComponent<CurrentScenesComponent>().Scene;
-            return currentScene.GetComponent<UnitComponent>().Get(accountComponent.RoleId);
+            return currentScene.GetComponent<UnitComponent>().Get(accountModel.RoleId);
         }
         
         public static Unit GetMyUnitFromCurrentScene(Scene currentScene)
         {
-            AccountComponent accountComponent = currentScene.Root().GetComponent<AccountComponent>();
-            return currentScene.GetComponent<UnitComponent>().Get(accountComponent.RoleId);
+            AccountModel accountModel = currentScene.Root().GetComponent<AccountModel>();
+            return currentScene.GetComponent<UnitComponent>().Get(accountModel.RoleId);
         }
     }
 }

@@ -2,7 +2,7 @@
 {
     [ChildOf(typeof(ModeMgr))]
     public class LobbyMode : Entity, IAwake, IUpdate, IDestroy, 
-            IDynamicEvent<EnterPlayMode>, IDynamicEvent<ExitPlayMode>
+            IDynamicEvent<EnterPlayModeEvent>, IDynamicEvent<ExitPlayModeEvent>
     {
         public CPlayMode playMode = CPlayMode.Lobby;
     }

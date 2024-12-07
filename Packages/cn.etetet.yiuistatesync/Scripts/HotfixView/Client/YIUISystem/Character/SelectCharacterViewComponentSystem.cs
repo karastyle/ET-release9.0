@@ -29,7 +29,7 @@ namespace ET.Client
         [EntitySystem]
         private static async ETTask<bool> YIUIOpen(this SelectCharacterViewComponent self)
         {
-            await self.RefreshRoleList();
+            self.RefreshRoleList().NoContext();
             await ETTask.CompletedTask;
             return true;
         }
@@ -45,14 +45,14 @@ namespace ET.Client
                 return;
             }
             
-            RoleInfoComponent roleInfoComponent = self.Root().GetComponent<RoleInfoComponent>();
-            self.RoleDataList = roleInfoComponent.GetRoleList();
+            RoleUnitModel roleUnitModel = self.Root().GetComponent<RoleUnitModel>();
+            self.RoleDataList = roleUnitModel.GetRoleList();
             
             for (int i = self.RoleDataList.Count; i < 5; i++)
             {
-                RoleInfo roleInfo = new();
-                roleInfo.ShowType = (int)RoleShowType.Empty;
-                self.RoleDataList.Add(roleInfo);
+                RoleUnit roleUnit = new();
+                roleUnit.ShowType = (int)RoleShowType.Empty;
+                self.RoleDataList.Add(roleUnit);
             }
             
             //设置滚动列表
@@ -61,7 +61,7 @@ namespace ET.Client
         }
         
         [EntitySystem]
-        private static void YIUILoopRenderer(this SelectCharacterViewComponent self, CharacterCardItemComponent item, EntityRef<RoleInfo> data, int index, bool select)
+        private static void YIUILoopRenderer(this SelectCharacterViewComponent self, CharacterCardItemComponent item, EntityRef<RoleUnit> data, int index, bool select)
         {
             item.ResetItem(data);
             item.SelectItem(select);
@@ -71,7 +71,7 @@ namespace ET.Client
         }
 
         [EntitySystem]
-        private static void YIUILoopOnClick(this SelectCharacterViewComponent self, CharacterCardItemComponent item, EntityRef<RoleInfo> data, int index, bool select)
+        private static void YIUILoopOnClick(this SelectCharacterViewComponent self, CharacterCardItemComponent item, EntityRef<RoleUnit> data, int index, bool select)
         {
             item.SelectItem(select);
             if (select)

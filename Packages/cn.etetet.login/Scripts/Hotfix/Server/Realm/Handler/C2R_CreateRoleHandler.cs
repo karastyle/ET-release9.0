@@ -1,7 +1,7 @@
 ﻿namespace ET.Server
 {
     [MessageSessionHandler(SceneType.Realm)]
-    [FriendOf(typeof(RoleInfo))]
+    [FriendOf(typeof(RoleUnit))]
     public class C2R_CreateRoleHandler : MessageSessionHandler<C2R_CreateRole, R2C_CreateRole>
     {
         protected override async ETTask Run(Session session, C2R_CreateRole request, R2C_CreateRole response)
@@ -37,7 +37,7 @@
                 using (await coroutineLockComponent.Wait(CoroutineLockType.CreateRole, request.Account.GetLongHashCode()))
                 {
                     DBComponent dbComponent = session.Root().GetComponent<DBManagerComponent>().GetZoneDB(session.Zone());
-                    var roleInfos = await dbComponent.Query<RoleInfo>(d => d.Name == request.Name
+                    var roleInfos = await dbComponent.Query<RoleUnit>(d => d.Name == request.Name
                             && d.ServerId == request.ServerId);
                     if (roleInfos != null && roleInfos.Count > 0)
                     {
@@ -61,19 +61,19 @@
                     }
 
                     long newRoleId = blackBoardInfo.Value + 1;
-                    RoleInfo newRoleInfo = session.AddChildWithId<RoleInfo>(newRoleId);
-                    newRoleInfo.Name = request.Name;
-                    newRoleInfo.State = (int)RoleInfoState.Normal;
-                    newRoleInfo.ServerId = request.ServerId;
-                    newRoleInfo.Account = request.Account;
-                    newRoleInfo.CreateTime = TimeInfo.Instance.ServerNow();
-                    newRoleInfo.LastLoginTime = 0;
-                    newRoleInfo.HeroId = request.HeroId;
+                    RoleUnit newRoleUnit = session.AddChildWithId<RoleUnit>(newRoleId);
+                    newRoleUnit.Name = request.Name;
+                    newRoleUnit.State = (int)RoleInfoState.Normal;
+                    newRoleUnit.ServerId = request.ServerId;
+                    newRoleUnit.Account = request.Account;
+                    newRoleUnit.CreateTime = TimeInfo.Instance.ServerNow();
+                    newRoleUnit.LastLoginTime = 0;
+                    newRoleUnit.HeroId = request.HeroId;
 
-                    response.RoleInfo = newRoleInfo.ToMessage();
+                    response.RoleInfo = newRoleUnit.ToMessage();
                     
-                    await dbComponent.Save<RoleInfo>(newRoleInfo);
-                    session.RemoveChild(newRoleInfo.Id);
+                    await dbComponent.Save<RoleUnit>(newRoleUnit);
+                    session.RemoveChild(newRoleUnit.Id);
 
                     blackBoardInfo.Value = newRoleId;
                     await dbComponent.Save<BlackBoardInfo>(blackBoardInfo);

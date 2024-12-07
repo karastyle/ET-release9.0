@@ -13,5 +13,6 @@
         //当前模式
         public  CPlayMode curPlayMode = CPlayMode.None;
     }
+    
 }
 

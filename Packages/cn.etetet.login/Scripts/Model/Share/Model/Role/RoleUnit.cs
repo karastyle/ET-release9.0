@@ -14,7 +14,7 @@
     }
 
     [ChildOf]
-    public class RoleInfo : Entity, IAwake
+    public class RoleUnit : Entity, IAwake
     {
         public string Name { get; set; }
         public int ServerId { get; set; }
@@ -36,9 +36,5 @@
         public int exp { get; set; }
 
         public int ShowType { get; set; } = (int)RoleShowType.Role;
-    }
-    public class BlackBoardInfo2: Entity
-    {
-        public long RoleIncrementId { get; set; }
     }
 }

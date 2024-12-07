@@ -40,8 +40,8 @@ namespace ET.Client
                 return false;
             }
             
-            ServerInfoComponent serverInfoComponentSystem = self.Root().GetComponent<ServerInfoComponent>();
-            self.ServerDataList = serverInfoComponentSystem.GetServerList();
+            ServerInfoModel serverInfoModel = self.Root().GetComponent<ServerInfoModel>();
+            self.ServerDataList = serverInfoModel.GetServerList();
             
             //设置滚动列表
             self.ServereLoop.ClearSelect();
@@ -79,8 +79,8 @@ namespace ET.Client
         private static void OnSelectServer(this SelectServerViewComponent self, ServerInfo server)
         {
             self.u_DataCurServerName.SetValue(server.ServerName);
-            AccountComponent serverInfoComponentSystem = self.Root().GetComponent<AccountComponent>();
-            serverInfoComponentSystem.ServerId = server.ServerId;
+            AccountModel serverInfoModelSystem = self.Root().GetComponent<AccountModel>();
+            serverInfoModelSystem.ServerId = server.ServerId;
         }
 
         #region YIUIEvent开始

@@ -26,6 +26,10 @@ namespace ET.Client
             return true;
         }
 
-       
+        [EntitySystem]
+        private static async ETTask DynamicEvent(this LoginPanelComponent self, SwitchSelectServerEvent message)
+        {
+            await self.UIPanel.OpenViewAsync<SelectServerViewComponent>();
+        }
     }
 }

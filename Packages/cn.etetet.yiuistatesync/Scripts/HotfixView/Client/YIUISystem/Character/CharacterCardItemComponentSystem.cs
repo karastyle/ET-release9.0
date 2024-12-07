@@ -23,19 +23,19 @@ namespace ET.Client
         {
         }
 
-        public static void ResetItem(this CharacterCardItemComponent self, EntityRef<RoleInfo> data)
+        public static void ResetItem(this CharacterCardItemComponent self, EntityRef<RoleUnit> data)
         {
             self.data = data;
-            RoleInfo roleInfo = data;
-            self.u_DataCardState.SetValue((int)roleInfo.ShowType);
-            if (roleInfo.ShowType == (int)RoleShowType.Empty)
+            RoleUnit roleUnit = data;
+            self.u_DataCardState.SetValue((int)roleUnit.ShowType);
+            if (roleUnit.ShowType == (int)RoleShowType.Empty)
             {
             }
             else
             {
                 //角色信息
-                self.u_DataName.SetValue(roleInfo.Name);
-                HeroConfigCategory.Instance.GetAll().TryGetValue(roleInfo.HeroId, out HeroConfig heroConfig);
+                self.u_DataName.SetValue(roleUnit.Name);
+                HeroConfigCategory.Instance.GetAll().TryGetValue(roleUnit.HeroId, out HeroConfig heroConfig);
                 if (heroConfig != null)
                 {
                     Log.Info("hero career: " + heroConfig.Name);
@@ -43,7 +43,7 @@ namespace ET.Client
                 }
                 else
                 {
-                    Log.Error("heroConfig is null" + roleInfo.HeroId);
+                    Log.Error("heroConfig is null" + roleUnit.HeroId);
                 }
             }
         }
@@ -55,7 +55,7 @@ namespace ET.Client
 
         private static async ETTask DeleteRole(this CharacterCardItemComponent self)
         {
-            RoleInfo data = self.data;
+            RoleUnit data = self.data;
             int errorCode = await LoginHelper.DeleteRole(self.Root(), data.Id);
             if (errorCode != ErrorCode.ERR_Success)
             {

@@ -5,7 +5,7 @@
     public static partial class LobbyModeSystem
     {
         [EntitySystem]
-        private static async ETTask DynamicEvent(this LobbyMode self, EnterPlayMode message)
+        private static async ETTask DynamicEvent(this LobbyMode self, EnterPlayModeEvent message)
         {
             await ETTask.CompletedTask;
             if (message.playMode != self.playMode)
@@ -17,7 +17,7 @@
         }
         
         [EntitySystem]
-        private static async ETTask DynamicEvent(this LobbyMode self, ExitPlayMode message)
+        private static async ETTask DynamicEvent(this LobbyMode self, ExitPlayModeEvent message)
         {
             await ETTask.CompletedTask;
             if (message.playMode != self.playMode)

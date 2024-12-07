@@ -35,8 +35,8 @@ namespace ET.Client
                 return false;
             }
             
-            RoleInfoComponent roleInfoComponent = self.Root().GetComponent<RoleInfoComponent>();
-            List<EntityRef<RoleInfo>> roleInfos = roleInfoComponent.GetRoleList();
+            RoleUnitModel roleUnitModel = self.Root().GetComponent<RoleUnitModel>();
+            List<EntityRef<RoleUnit>> roleInfos = roleUnitModel.GetRoleList();
             if (roleInfos.Count > 0)
             {
                 //选角界面

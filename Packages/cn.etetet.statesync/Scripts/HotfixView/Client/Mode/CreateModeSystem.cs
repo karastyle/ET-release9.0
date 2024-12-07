@@ -5,7 +5,7 @@
     public static partial class CreateModeSystem
     {
         [EntitySystem]
-        private static async ETTask DynamicEvent(this CreateMode self, EnterPlayMode message)
+        private static async ETTask DynamicEvent(this CreateMode self, EnterPlayModeEvent message)
         {
             await ETTask.CompletedTask;
             if (message.playMode != self.playMode)
@@ -15,7 +15,7 @@
         }
 
         [EntitySystem]
-        private static async ETTask DynamicEvent(this CreateMode self, ExitPlayMode message)
+        private static async ETTask DynamicEvent(this CreateMode self, ExitPlayModeEvent message)
         {
             await ETTask.CompletedTask;
             if (message.playMode != self.playMode)
@@ -24,6 +24,20 @@
             }
 
 
+        }
+        
+        [EntitySystem]
+        private static async ETTask DynamicEvent(this CreateMode self, CreateCharacterEvent message)
+        {
+            //创角
+            
+        }
+        
+        [EntitySystem]
+        private static async ETTask DynamicEvent(this CreateMode self, EnterGameEvent message)
+        {
+            //进入游戏
+            
         }
         
         [EntitySystem]

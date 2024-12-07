@@ -49,4 +49,8 @@
     //关闭选角界面
     public struct CloseCharacterEvent
     {}
+    
+    //切到选服界面
+    public struct SwitchSelectServerEvent
+    {}
 }
